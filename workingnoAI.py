@@ -120,6 +120,6 @@ for idx, url in enumerate(urls):
                 product_data["reviews"]
             ])
         print(f"Data saved to {output_file}")
-    
+        
     except Exception as e:
         print(f"Error processing URL {idx + 1}: {e}")

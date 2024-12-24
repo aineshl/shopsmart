@@ -123,7 +123,7 @@ for idx, url in enumerate(urls):
         product_data["reviews"] = generate_summary(". ".join(reviews)) if reviews else "No reviews available"
         
         # Save to CSV
-        output_file = f"mainproduct_data_{idx + 1}.csv"
+        output_file = f"AImainproduct_data_{idx + 1}.csv"
         with open(output_file, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Title", "Product Image", "Price", "Rating", "Number of Ratings", "Specifications", "About This Item", "Reviews"])
