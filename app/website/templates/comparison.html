@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Comparison Results</h1>
+        <h1>Summary</h1>
         
         <!-- Check if results are available -->
         {% if results %}
@@ -26,9 +26,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ result.title }}</h5>
                             <p class="card-text"><strong>Price:</strong> ${{ result.price }}</p>
-                            <p class="card-text"><strong>Rating:</strong> {{ result.rating }}</p>
-                            <p class="card-text"><strong>Number of Ratings:</strong> {{ result.number_of_ratings }}</p>
-                            <!-- Display Adjusted Rating -->
+                            <p class="card-text"><strong>Rated {{ result.rating }}/5 by {{ result.number_of_ratings }} users</strong></p>
                             <p class="card-text"><strong>Product Score:</strong> {{ result.adjusted_rating }}</p>
                             <h6>Specifications:</h6>
                             <ul>
