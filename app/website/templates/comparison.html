@@ -25,10 +25,11 @@
                         <img src="{{ result.product_image }}" alt="{{ result.title }}" class="card-img-top" style="max-height: 300px; object-fit: contain;">
                         <div class="card-body">
                             <h5 class="card-title">{{ result.title }}</h5>
-                            <p class="card-text"><strong>Price:</strong> {{ result.price }}</p>
+                            <p class="card-text"><strong>Price:</strong> ${{ result.price }}</p>
                             <p class="card-text"><strong>Rating:</strong> {{ result.rating }}</p>
                             <p class="card-text"><strong>Number of Ratings:</strong> {{ result.number_of_ratings }}</p>
-                            
+                            <!-- Display Adjusted Rating -->
+                            <p class="card-text"><strong>Product Score:</strong> {{ result.adjusted_rating }}</p>
                             <h6>Specifications:</h6>
                             <ul>
                                 {% for key, value in result.specs.items() %}
