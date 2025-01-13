@@ -14,52 +14,23 @@
     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     crossorigin="anonymous"
   />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
     <title>URL Input Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-        }
-        .container {
-            text-align: center;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        input[type="url"] {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px 20px;
-            color: #fff;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
+<div class="title">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Amazon ShopSmart">
+</div>
 <body>
     <div class="container">
-        <h1>Enter URLs</h1>
+        <h1>Compare your Amazon products here!</h1>
+        <h2>Paste the URLs of your prospective buys below and hit submit to get a direct product comparison and an algorithm based recommendation that accounts for prices, ratings, and reviews</h2>
         <form action="/" method="POST">
-            <input type="url" name="url1" placeholder="Enter first URL" required>
+            <input type="url" name="url1" placeholder="Product 1 URL" required>
             <br>
-            <input type="url" name="url2" placeholder="Enter second URL" required>
+            <input type="url" name="url2" placeholder="Product 2 URL" required>
             <br>
             <button type="submit">Submit</button>
         </form>

@@ -1,0 +1,96 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stacked layout */
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #D8B7DD, #dfd8d8); /* Light purple gradient */
+    color: #fff; /* Set the default text color to white */
+    text-align: center; /* Centered text */
+    padding: 20px; /* Added padding to prevent content from touching edges */
+}
+
+.title {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 750px; /* Adjust the width of the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 50px; /* Added spacing below the title */
+}
+
+.title img {
+    width: 100%; /* Ensure image fits the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 20px; /* Rounded corners for the image */
+}
+
+h1 {
+    font-weight: 700; /* Bold header */
+    margin-bottom: 30px; /* Increased margin for better spacing */
+    background: linear-gradient(135deg, #333, #333); /* Gradient from purple to pink */
+    -webkit-background-clip: text; /* Clip the background to text (WebKit specific) */
+    background-clip: text; /* Standard syntax for Firefox */
+    color: transparent; /* Make text color transparent to show gradient */
+}
+
+h2 {
+    font-weight: 600; /* Slightly lighter font weight for the subheader */
+    margin-top: -10px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #333, #333); /* Gradient from purple to pink */
+    -webkit-background-clip: text; /* Clip the background to text */
+    background-clip: text; /* Standard syntax for Firefox */
+    color: transparent; /* Make text color transparent to show gradient */
+    font-size: 18px; /* Smaller size for the subheader */
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 30px;
+    position: relative;
+    top: 20px; /* Move the container down by 50px */
+    background-color: #F3F1F9; /* Soft lavender to complement the background */
+    border-radius: 20px; /* Rounded corners for the form */
+    margin: 20px 0; /* Added spacing between elements */
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.15); /* Deeper shadow to make it pop */
+}
+
+input[type="url"] {
+    width: 100%; /* Ensure full width of the container */
+    padding: 14px;
+    margin: 12px 0;
+    border: 2px solid #333; /* Darker border */
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f0f0f0; /* Lighter background for input fields */
+    color: #333; /* Dark text inside input */
+}
+
+input[type="url"]:focus {
+    border-color: #7F3FBF; /* Purple focus border */
+    box-shadow: 0 0 10px rgba(127, 63, 191, 0.5); /* Purple glow on focus */
+    outline: none;
+}
+button {
+    padding: 12px 24px;
+    color: #fff;
+    background: linear-gradient(90deg, #9B4DFF, #fe379a); /* Gradient from purple to pink */
+    border: 2px solid #7F3FBF; /* Purple border to match the focus effect */
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #fe379a, #9B4DFF); /* Reverse gradient on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    border-color: #555; /* Darker border on hover */
+}
