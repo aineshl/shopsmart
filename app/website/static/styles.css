@@ -6,8 +6,8 @@ body {
     flex-direction: column; /* Stacked layout */
     height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #D8B7DD, #dfd8d8); /* Light purple gradient */
-    color: #fff; /* Set the default text color to white */
+    background: linear-gradient(135deg, #FFF6E5, #FFE9CC); /* Very light orange gradient */
+    color: #333; /* Set the default text color to dark gray for readability */
     text-align: center; /* Centered text */
     padding: 20px; /* Added padding to prevent content from touching edges */
 }
@@ -15,9 +15,8 @@ body {
 .title {
     position: absolute;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 750px; /* Adjust the width of the image */
+    left: 20px;
+    width: 600px; /* Adjust the width of the image */
     height: auto; /* Maintain aspect ratio */
     margin-bottom: 50px; /* Added spacing below the title */
 }
@@ -29,19 +28,18 @@ body {
 }
 
 h1 {
-    font-weight: 700; /* Bold header */
+    font-weight: 600; /* Bold header */
     margin-bottom: 30px; /* Increased margin for better spacing */
-    background: linear-gradient(135deg, #333, #333); /* Gradient from purple to pink */
+    background: linear-gradient(135deg, #D97706, #FF8C00); /* Orange gradient */
     -webkit-background-clip: text; /* Clip the background to text (WebKit specific) */
     background-clip: text; /* Standard syntax for Firefox */
     color: transparent; /* Make text color transparent to show gradient */
 }
 
 h2 {
-    font-weight: 600; /* Slightly lighter font weight for the subheader */
     margin-top: -10px;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #333, #333); /* Gradient from purple to pink */
+    background: linear-gradient(135deg, #D97706, #FF8C00); /* Orange gradient */
     -webkit-background-clip: text; /* Clip the background to text */
     background-clip: text; /* Standard syntax for Firefox */
     color: transparent; /* Make text color transparent to show gradient */
@@ -54,34 +52,35 @@ h2 {
     padding: 30px;
     position: relative;
     top: 20px; /* Move the container down by 50px */
-    background-color: #F3F1F9; /* Soft lavender to complement the background */
+    background-color: #FFFDF7; /* Very light cream for a soft, clean look */
     border-radius: 20px; /* Rounded corners for the form */
     margin: 20px 0; /* Added spacing between elements */
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.15); /* Deeper shadow to make it pop */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Softer shadow for a lighter feel */
 }
 
 input[type="url"] {
     width: 100%; /* Ensure full width of the container */
     padding: 14px;
     margin: 12px 0;
-    border: 2px solid #333; /* Darker border */
+    border: 2px solid #FF8C00; /* Brighter orange border */
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background-color: #f0f0f0; /* Lighter background for input fields */
+    background-color: #FFFBF4; /* Very light orange tint for input fields */
     color: #333; /* Dark text inside input */
 }
 
 input[type="url"]:focus {
-    border-color: #7F3FBF; /* Purple focus border */
-    box-shadow: 0 0 10px rgba(127, 63, 191, 0.5); /* Purple glow on focus */
+    border-color: #D97706; /* Slightly darker orange focus border */
+    box-shadow: 0 0 10px rgba(217, 119, 6, 0.5); /* Softer orange glow on focus */
     outline: none;
 }
+
 button {
     padding: 12px 24px;
     color: #fff;
-    background: linear-gradient(90deg, #9B4DFF, #fe379a); /* Gradient from purple to pink */
-    border: 2px solid #7F3FBF; /* Purple border to match the focus effect */
+    background: linear-gradient(90deg, #FF8C00, #D97706); /* Orange gradient */
+    border: 2px solid #FF8C00; /* Orange border to match the focus effect */
     border-radius: 15px;
     cursor: pointer;
     font-size: 16px;
@@ -90,7 +89,80 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(90deg, #fe379a, #9B4DFF); /* Reverse gradient on hover */
+    background: linear-gradient(90deg, #D97706, #FF8C00); /* Reverse gradient on hover */
     transform: scale(1.05); /* Slightly enlarge on hover */
     border-color: #555; /* Darker border on hover */
 }
+
+.container-comparison {
+    width: 100%;
+    max-width: 1000px;
+    padding: 30px;
+    position: relative;
+    top: 0px; /* Adjust the positioning */
+    margin: 20px 0; /* Margin for spacing */
+}
+
+.card {
+    background-color: #FFFDF7; /* Make the card background transparent */
+    border-radius: 20px; /* Rounded corners for cards */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Softer shadow for a lighter feel */
+    overflow: hidden; /* Clip overflow to maintain rounded corners */
+    height: auto; /* Allow the card to grow with its content */
+    max-height: 500px; /* Set a max height for the card */
+    margin-top: 50px; /* Push the card lower on the page */
+    margin-bottom: 20px; /* Space between cards */
+}
+
+.card-body {
+    background-color: transparent; /* Make the body background transparent */
+    max-height: 500px; /* Limit the body content height */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+    padding: 20px;
+}
+
+.card img {
+    border-bottom: 2px solid #FF8C00; /* Add an orange border below the image */
+    max-height: 300px; /* Limit image size */
+    object-fit: contain; /* Ensure the image maintains aspect ratio */
+    margin-bottom:3px;
+}
+
+.card-title {
+    font-weight: 525;
+    color: #EC8103;
+}
+
+
+.card-score {
+    font-weight: 700;
+    font-size: 40px;
+    color: #EC8103;
+}
+
+.card-score .small-rating {
+    font-size: 0.6em; /* Adjust the size of /5 */
+    font-weight: 400;
+    vertical-align: sub; /* Make it appear slightly lower to align well with the rating */
+}
+
+.card-text {
+    font-size: 20px;
+    color: #EC8103;
+}
+
+.card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.card ul li {
+    margin: 5px;
+    color: #EC8103;
+    font-family: 'Raleway', sans-serif;
+}
+
+.card-text strong {
+    font-weight: 500;
+}
+

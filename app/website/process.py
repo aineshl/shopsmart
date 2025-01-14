@@ -110,6 +110,10 @@ def scrape_url(url):
 
         specs = soup.find_all("tr", {"class": "a-spacing-small"})
         specs_data = {spec.find_all("span")[0].text.strip(): spec.find_all("span")[1].text.strip() for spec in specs if spec.find_all("span")}
+
+        # Limit to the first 3 specs
+        specs_data = dict(list(specs_data.items())[:3])
+
         product_data["specs"] = specs_data
 
         about_section = soup.find("div", {"id": "feature-bullets"})
@@ -117,6 +121,7 @@ def scrape_url(url):
             about_items = [item.text.strip() for item in about_section.find_all("span", {"class": "a-list-item"})]
             if about_items:
                 product_data["about_this_item"] = generate_summary(" ".join(about_items))
+                #product_data["about_this_item"] = "test"
             else:
                 product_data["about_this_item"] = "No information available"
         else:
@@ -129,7 +134,8 @@ def scrape_url(url):
             if review_text:
                 reviews.append(review_text.text.strip())
         product_data["reviews"] = generate_summary(". ".join(reviews)) if reviews else "No reviews available"
-
+        #product_data["reviews"] = "test"
+        
         return product_data
     except Exception as e:
         print(f"Error processing URL {url}: {e}")

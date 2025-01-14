@@ -12,33 +12,36 @@
         crossorigin="anonymous"
     />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1>Summary</h1>
-        
+    <div class="title">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Amazon ShopSmart">
+    </div>
+    <div class="container-comparison mt-5">
         <!-- Check if results are available -->
         {% if results %}
             <div class="row">
                 {% for result in results %}
                 <div class="col-md-6">
-                    <div class="card mb-4">
-                        <img src="{{ result.product_image }}" alt="{{ result.title }}" class="card-img-top" style="max-height: 300px; object-fit: contain;">
+                    <div class="card mb-8">
+                        <img src="{{ result.product_image }}" alt="{{ result.title }}" class="card-img-top" style="max-height: 200px; object-fit: contain;">
                         <div class="card-body">
                             <h5 class="card-title">{{ result.title }}</h5>
+                            <h5 class="card-score">
+                                {{ result.adjusted_rating }}<span class="small-rating">/5</span>
+                            </h5>
                             <p class="card-text"><strong>Price:</strong> ${{ result.price }}</p>
                             <p class="card-text"><strong>Rated {{ result.rating }}/5 by {{ result.number_of_ratings }} users</strong></p>
-                            <p class="card-text"><strong>Product Score:</strong> {{ result.adjusted_rating }}</p>
-                            <h6>Specifications:</h6>
+                            <p class="card-text"><strong>Top Features:</strong></p>
                             <ul>
                                 {% for key, value in result.specs.items() %}
-                                    <li><strong>{{ key }}:</strong> {{ value }}</li>
+                                    <li>{{ key }}: {{ value }}</li>
                                 {% endfor %}
                             </ul>
                             
-                            <p><strong>About This Item:</strong> {{ result.about_this_item }}</p>
-                            <p><strong>Reviews:</strong> {{ result.reviews }}</p>
+                            <p class="card-text"><strong>About This Item:</strong> {{ result.about_this_item }}</p>
+                            <p class="card-text"><strong>Reviews:</strong> {{ result.reviews }}</p>
                         </div>
                     </div>
                 </div>
