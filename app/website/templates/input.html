@@ -18,6 +18,45 @@
 
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
+  <style>
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none; /* Hidden by default */
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Make sure the overlay is above other content */
+    }
+
+    .loading-message {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+    }
+
+    /* Optional: Center the form and style */
+    .container {
+      padding-top: 50px;
+    }
+
+    .loading-message {
+        font-size: 24px;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 600;
+        color: transparent; /* Make text transparent to show the gradient */
+        background: linear-gradient(135deg, #D97706, #FF8C00); /* Apply the gradient */
+        -webkit-background-clip: text; /* Ensure the gradient is clipped to the text in WebKit browsers */
+        background-clip: text; /* Apply background clip in non-WebKit browsers */
+        text-align: center;
+      }
+
+  </style>
+
     <title>URL Input Page</title>
 </head>
 <div class="title">
@@ -26,14 +65,51 @@
 <body>
     <div class="container">
         <h1>Compare your Amazon products here!</h1>
-        <h2>Paste the URLs of your prospective buys below and hit submit to get a direct product comparison and an algorithm based recommendation that accounts for prices, ratings, and reviews</h2>
-        <form action="/" method="POST">
+        <h2>Paste the URLs of your products below and hit submit to receive a direct comparison, a shopsmart score, and AI-generated summaries of reviews and features</h2>
+        <form id="product-form" action="/" method="POST">
             <input type="url" name="url1" placeholder="Product 1 URL" required>
             <br>
             <input type="url" name="url2" placeholder="Product 2 URL" required>
             <br>
             <button type="submit">Submit</button>
+            <br>
+            <br>
+            <h2 style="font-size: 16px;">The shopsmart score is a comprehensive rating that takes into account product prices, customer ratings, reviews, and reliability to help you make the best choice</h2>
         </form>
     </div>
+
+    <!-- Full-page Loading overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div id="loading-message" class="loading-message">
+            This might take 1-2 minutes! Sit back and relax while we pick the best product for you
+        </div>
+    </div>
+
+    <script>
+      const form = document.getElementById('product-form');
+      const loadingOverlay = document.getElementById('loading-overlay');
+      const loadingMessage = document.getElementById('loading-message');
+      
+      form.addEventListener('submit', function(event) {
+        // Show loading overlay when form is submitted
+        loadingOverlay.style.display = 'flex';
+
+        // Initialize the ellipsis counter
+        let dotCount = 0;
+        
+        // Function to update the loading message with ellipsis
+        const updateLoadingMessage = () => {
+          dotCount = (dotCount + 1) % 4; // Cycle through 0 to 3 dots
+          let dots = '.'.repeat(dotCount); // Repeat dots based on count
+          loadingMessage.innerHTML = 'This might take 1-2 minutes! Sit back and relax while we pick the best product for you' + dots;
+        };
+
+        // Update the loading message every 0.5 seconds
+        const interval = setInterval(updateLoadingMessage, 500);
+
+        // Optional: If you need to clear the interval when loading is done, you can do it like this:
+        // clearInterval(interval); after the form is processed
+      });
+    </script>
 </body>
 </html>

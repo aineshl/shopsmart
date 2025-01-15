@@ -120,8 +120,8 @@ def scrape_url(url):
         if about_section:
             about_items = [item.text.strip() for item in about_section.find_all("span", {"class": "a-list-item"})]
             if about_items:
-                product_data["about_this_item"] = generate_summary(" ".join(about_items))
-                #product_data["about_this_item"] = "test"
+                #product_data["about_this_item"] = generate_summary(" ".join(about_items))
+                product_data["about_this_item"] = "test"
             else:
                 product_data["about_this_item"] = "No information available"
         else:
@@ -133,8 +133,8 @@ def scrape_url(url):
             review_text = review.find("span")
             if review_text:
                 reviews.append(review_text.text.strip())
-        product_data["reviews"] = generate_summary(". ".join(reviews)) if reviews else "No reviews available"
-        #product_data["reviews"] = "test"
+        #product_data["reviews"] = generate_summary(". ".join(reviews)) if reviews else "No reviews available"
+        product_data["reviews"] = "test blah sidfhio2 amsidf siofjaiojs test blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojs"
         
         return product_data
     except Exception as e:
@@ -164,5 +164,11 @@ def scrape_and_summarize(urls):
         else:
             results[1]["adjusted_rating"] *= price_factor
             results[1]["adjusted_rating"] = round(results[1]["adjusted_rating"], 1)
+
+        # Add "ShopSmart Recommended" next to the adjusted rating
+        if results[0]["adjusted_rating"] > results[1]["adjusted_rating"]:
+            results[0]["recommended"] = "shopsmart's choice"
+        else:
+            results[1]["recommended"] = "shopsmart's choice"
 
     return results

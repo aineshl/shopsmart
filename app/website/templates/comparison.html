@@ -25,23 +25,33 @@
                 {% for result in results %}
                 <div class="col-md-6">
                     <div class="card mb-8">
-                        <img src="{{ result.product_image }}" alt="{{ result.title }}" class="card-img-top" style="max-height: 200px; object-fit: contain;">
                         <div class="card-body">
-                            <h5 class="card-title">{{ result.title }}</h5>
+                            <!-- Move the product title here -->
+                            <h5 class="card-title">{{ result.title }}</h5> <br>
+                        </div>
+                        <img src="{{ result.product_image }}" alt="{{ result.title }}" class="card-img-top" style="max-height: 200px; object-fit: contain;"> 
+                        {% if result.recommended %}
+                            <span class="recommended-label">
+                                ⭐ {{ result.recommended }}
+                            </span>
+                        {% else %}
+                            <span class="recommended-label"><br></span>
+                        {% endif %}
+                        <div class="card-body">
                             <h5 class="card-score">
                                 {{ result.adjusted_rating }}<span class="small-rating">/5</span>
                             </h5>
                             <p class="card-text"><strong>Price:</strong> ${{ result.price }}</p>
                             <p class="card-text"><strong>Rated {{ result.rating }}/5 by {{ result.number_of_ratings }} users</strong></p>
-                            <p class="card-text"><strong>Top Features:</strong></p>
+                            <p class="card-text card-text-top-features"><strong>Top Features:</strong></p>
                             <ul>
                                 {% for key, value in result.specs.items() %}
-                                    <li>{{ key }}: {{ value }}</li>
+                                    <li><strong>{{ key }}: </strong> {{ value }}</li>
                                 {% endfor %}
                             </ul>
                             
-                            <p class="card-text"><strong>About This Item:</strong> {{ result.about_this_item }}</p>
-                            <p class="card-text"><strong>Reviews:</strong> {{ result.reviews }}</p>
+                            <p class="card-text"><strong>About This Item:</strong><br><span>{{ result.about_this_item }}</span></p>
+                            <p class="card-text"><strong>Reviews:</strong><br><span>{{ result.reviews }}</span></p>
                         </div>
                     </div>
                 </div>

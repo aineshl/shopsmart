@@ -96,7 +96,7 @@ button:hover {
 
 .container-comparison {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1300px;
     padding: 30px;
     position: relative;
     top: 0px; /* Adjust the positioning */
@@ -109,16 +109,17 @@ button:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Softer shadow for a lighter feel */
     overflow: hidden; /* Clip overflow to maintain rounded corners */
     height: auto; /* Allow the card to grow with its content */
-    max-height: 500px; /* Set a max height for the card */
-    margin-top: 50px; /* Push the card lower on the page */
+    max-height: 550px; /* Set a max height for the card */
+    margin-top: 100px; /* Push the card lower on the page */
     margin-bottom: 20px; /* Space between cards */
 }
 
 .card-body {
-    background-color: transparent; /* Make the body background transparent */
-    max-height: 500px; /* Limit the body content height */
+    background-color: transparent;
+    max-height: 500px;
     overflow-y: auto; /* Add vertical scroll if content overflows */
     padding: 20px;
+    position: relative; /* Position for the scroll icon */
 }
 
 .card img {
@@ -131,6 +132,15 @@ button:hover {
 .card-title {
     font-weight: 525;
     color: #EC8103;
+    overflow: hidden; /* Hide overflowing content */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+    display: -webkit-box; /* Use a WebKit-based layout box */
+    -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+    -webkit-line-clamp: 2; /* Limit to 2 lines (WebKit-specific) */
+    line-clamp: 2; /* Standard property for line clamping */
+    line-height: 1.2em; /* Adjust the line height as needed */
+    max-height: 2.4em; /* line-height * number of lines */
+    word-break: break-word; /* Ensure long words break properly */
 }
 
 
@@ -151,18 +161,40 @@ button:hover {
     color: #EC8103;
 }
 
+.card-score,
+.card-text:not(.card-text-top-features) {
+    border-bottom: 1px solid #FF8C00; /* Orange border */
+    padding-bottom: 10px; /* Add some space before the border */
+    margin-bottom: 10px; /* Add margin after the border */
+}
+
+.card-text span {
+    font-size: 14px; /* Make the results text smaller */
+}
+
 .card ul {
     list-style-type: none;
     padding: 0;
+    border-bottom: 1px solid #FF8C00; /* Orange border */
+    padding-bottom: 10px; /* Add some space before the border */
+    margin-bottom: 10px; /* Add margin after the border */
 }
 
 .card ul li {
     margin: 5px;
     color: #EC8103;
     font-family: 'Raleway', sans-serif;
+    font-size: 14px;
 }
 
 .card-text strong {
     font-weight: 500;
 }
 
+.recommended-label {
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #D97706, #FF8C00); /* Orange gradient */
+    -webkit-background-clip: text; /* Clip the background to text */
+    background-clip: text; /* Standard syntax for Firefox */
+    color: transparent; /* Make text color transparent to show gradient */
+}
