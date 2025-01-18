@@ -57,7 +57,7 @@
 
   </style>
 
-    <title>URL Input Page</title>
+    <title>amazon shopsmart</title>
 </head>
 <div class="title">
     <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Amazon ShopSmart">
@@ -78,7 +78,6 @@
         </form>
     </div>
 
-    <!-- Full-page Loading overlay -->
     <div id="loading-overlay" class="loading-overlay">
         <div id="loading-message" class="loading-message">
             This might take 1-2 minutes! Sit back and relax while we pick the best product for you
@@ -91,24 +90,18 @@
       const loadingMessage = document.getElementById('loading-message');
       
       form.addEventListener('submit', function(event) {
-        // Show loading overlay when form is submitted
         loadingOverlay.style.display = 'flex';
 
-        // Initialize the ellipsis counter
         let dotCount = 0;
         
-        // Function to update the loading message with ellipsis
         const updateLoadingMessage = () => {
-          dotCount = (dotCount + 1) % 4; // Cycle through 0 to 3 dots
-          let dots = '.'.repeat(dotCount); // Repeat dots based on count
+          dotCount = (dotCount + 1) % 4; 
+          let dots = '.'.repeat(dotCount); 
           loadingMessage.innerHTML = 'This might take 1-2 minutes! Sit back and relax while we pick the best product for you' + dots;
         };
 
-        // Update the loading message every 0.5 seconds
         const interval = setInterval(updateLoadingMessage, 500);
 
-        // Optional: If you need to clear the interval when loading is done, you can do it like this:
-        // clearInterval(interval); after the form is processed
       });
     </script>
 </body>

@@ -5,7 +5,6 @@ import json
 from transformers import BartTokenizer, BartForConditionalGeneration
 from concurrent.futures import ThreadPoolExecutor
 
-# Load the BART model and tokenizer
 tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
 model = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
 
@@ -92,7 +91,7 @@ def scrape_url(url):
         if price_section:
             price = price_section.find("span")
             if price:
-                price_str = price.text.strip()  # e.g., "$24.99"
+                price_str = price.text.strip()  
                 price_float = float(price_str.replace('$', '').replace(',', ''))
                 product_data["price"] = price_float
         else:
@@ -111,7 +110,6 @@ def scrape_url(url):
         specs = soup.find_all("tr", {"class": "a-spacing-small"})
         specs_data = {spec.find_all("span")[0].text.strip(): spec.find_all("span")[1].text.strip() for spec in specs if spec.find_all("span")}
 
-        # Limit to the first 3 specs
         specs_data = dict(list(specs_data.items())[:3])
 
         product_data["specs"] = specs_data
@@ -120,21 +118,19 @@ def scrape_url(url):
         if about_section:
             about_items = [item.text.strip() for item in about_section.find_all("span", {"class": "a-list-item"})]
             if about_items:
-                #product_data["about_this_item"] = generate_summary(" ".join(about_items))
-                product_data["about_this_item"] = "test"
+                product_data["about_this_item"] = generate_summary(" ".join(about_items))
             else:
                 product_data["about_this_item"] = "No information available"
         else:
             product_data["about_this_item"] = "No information available"
 
         reviews = []
-        review_section = soup.find_all("div", {"data-hook": "review-collapsed"}, limit=100)
+        review_section = soup.find_all("div", {"data-hook": "review-collapsed"}, limit=10)
         for review in review_section:
             review_text = review.find("span")
             if review_text:
                 reviews.append(review_text.text.strip())
-        #product_data["reviews"] = generate_summary(". ".join(reviews)) if reviews else "No reviews available"
-        product_data["reviews"] = "test blah sidfhio2 amsidf siofjaiojs test blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojstest blah sidfhio2 amsidf siofjaiojs"
+        product_data["reviews"] = generate_summary(". ".join(reviews)) if reviews else "No reviews available"
         
         return product_data
     except Exception as e:
@@ -146,7 +142,6 @@ def scrape_and_summarize(urls):
     with ThreadPoolExecutor() as executor:
         results = list(executor.map(scrape_url, urls))
 
-    # Handle the case where one or more URLs fail to scrape
     results = [result for result in results if result is not None]
     
     if len(urls) == 2:
@@ -165,10 +160,9 @@ def scrape_and_summarize(urls):
             results[1]["adjusted_rating"] *= price_factor
             results[1]["adjusted_rating"] = round(results[1]["adjusted_rating"], 1)
 
-        # Add "ShopSmart Recommended" next to the adjusted rating
         if results[0]["adjusted_rating"] > results[1]["adjusted_rating"]:
             results[0]["recommended"] = "shopsmart's choice"
         else:
             results[1]["recommended"] = "shopsmart's choice"
-
+        
     return results

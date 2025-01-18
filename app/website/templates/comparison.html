@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comparison Results</title>
-    <!-- Add Bootstrap for styling -->
+    <title>shopsmart results</title>
     <link
         rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -19,14 +18,12 @@
         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Amazon ShopSmart">
     </div>
     <div class="container-comparison mt-5">
-        <!-- Check if results are available -->
         {% if results %}
             <div class="row">
                 {% for result in results %}
                 <div class="col-md-6">
                     <div class="card mb-8">
                         <div class="card-body">
-                            <!-- Move the product title here -->
                             <h5 class="card-title">{{ result.title }}</h5> <br>
                         </div>
                         <img src="{{ result.product_image }}" alt="{{ result.title }}" class="card-img-top" style="max-height: 200px; object-fit: contain;"> 
@@ -62,7 +59,6 @@
         {% endif %}
     </div>
 
-    <!-- Add Bootstrap's JS for interactive elements -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zyJtq+Pb6aCZb6d9TW2goVpkv8gU6dO9A5xONjRS" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0YzqFjcJxW+gS9drXy9zz6Omtg8XlMQvH2j6WySgwIZGn89Y" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0YzqFjcJxW+gS9drXy9zz6Omtg8XlMQvH2j6WySgwIZGn89Y" crossorigin="anonymous"></script>
